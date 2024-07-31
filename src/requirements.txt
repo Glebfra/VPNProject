@@ -19,7 +19,7 @@ jinja2==3.1.4; python_version >= '3.7'
 markdown-it-py==3.0.0; python_version >= '3.8'
 markupsafe==2.1.5; python_version >= '3.7'
 mdurl==0.1.2; python_version >= '3.7'
-outline-api==0.0.6
+outline-vpn-api==6.3.0
 psycopg2-binary==2.9.9; python_version >= '3.7'
 pydantic==2.8.2; python_version >= '3.8'
 pydantic-core==2.20.1; python_version >= '3.8'

@@ -5,10 +5,10 @@ name = "pypi"
 
 [packages]
 sqlalchemy = "*"
-outline-api = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 fastapi = "*"
+outline-vpn-api = "*"
 
 [dev-packages]
 
