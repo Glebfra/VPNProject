@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6e13e4b65d1a4ae15ded80c97a8528b68b6acaeee94c84ea3eae472af3e56de9"
+            "sha256": "bf9fe9e4aa3794f30a663a674e56fd5b7bea6bcdf2995c0266f17e4794d194a6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -412,13 +412,13 @@
             "markers": "python_version >= '3.7'",
             "version": "==0.1.2"
         },
-        "outline-api": {
+        "outline-vpn-api": {
             "hashes": [
-                "sha256:50e276020b9520b515569b8604de3bd6b30a2bfdb304afceec88d52a84c15f28",
-                "sha256:a4d59bba7648f7d55d509d0cffbcf78a05c742ab4d1d72a5028bf267794d7507"
+                "sha256:158776099b2ede1aa479d49ec3cefd3698de06a29d9c7d96b399425dc2bdab49",
+                "sha256:72e1c2f3ef8ed8d885e708bf4b55abd8a3c353aaa85ccc64ef19811d57ac8421"
             ],
             "index": "pypi",
-            "version": "==0.0.6"
+            "version": "==6.3.0"
         },
         "psycopg2-binary": {
             "hashes": [
@@ -609,6 +609,15 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==2.18.0"
+        },
+        "pytelegrambotapi": {
+            "hashes": [
+                "sha256:686813e4d4f9e917530cd9cd411d62265293f12783294ebef87f8a1fe195b262",
+                "sha256:b32cde09f295f80330253cc185104f02c4d70041782d3524c4cc424abbaba636"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==4.21.0"
         },
         "python-dotenv": {
             "hashes": [
