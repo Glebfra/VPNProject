@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 from sqlalchemy import DateTime, String, create_engine
@@ -19,5 +20,5 @@ class OutlineKey(Base):
 
 
 if __name__ == '__main__':
-    engine = create_engine('postgresql+psycopg2://root:root@localhost/db', echo=True)
+    engine = create_engine(os.getenv('SERVER_DB'), echo=True)
     OutlineKey.__table__.create(engine)
