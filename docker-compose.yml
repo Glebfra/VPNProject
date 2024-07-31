@@ -12,6 +12,17 @@ services:
     ports:
       - '5432:5432'
 
+  outline:
+    container_name: outline
+    build:
+      context: ./src
+    env_file:
+      - .env
+    volumes:
+      - ./src:/usr/src
+    ports:
+      - "8000:8000"
+
   adminer:
     image: adminer
     restart: always
