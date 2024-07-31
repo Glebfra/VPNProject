@@ -23,6 +23,13 @@ services:
     ports:
       - "8000:8000"
 
+  telegram_bot:
+    container_name: telegram_bot
+    build:
+      context: ./src/bot
+    env_file:
+      - .env
+
   adminer:
     image: adminer
     restart: always

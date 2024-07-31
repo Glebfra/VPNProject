@@ -9,6 +9,7 @@ psycopg2-binary = "*"
 python-dotenv = "*"
 fastapi = "*"
 outline-vpn-api = "*"
+pytelegrambotapi = "*"
 
 [dev-packages]
 
