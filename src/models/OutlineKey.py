@@ -11,6 +11,7 @@ class OutlineKey(Base):
     __tablename__ = 'outline_key'
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    telegram_id: Mapped[str] = mapped_column(String(256), nullable=True, default=None)
     name: Mapped[str] = mapped_column(String(256))
     password: Mapped[str] = mapped_column(String(256))
     port: Mapped[str] = mapped_column(String(5))
