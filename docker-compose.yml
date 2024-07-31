@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - .data:/dev/smh
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8080:8080'
