@@ -1,12 +1,7 @@
-import asyncio
 import os
 
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import Session
 from telebot.async_telebot import AsyncTeleBot
 
-from src.models.DynamicKey import DynamicKey
-from src.models.OutlineKey import OutlineKey
 from src.outline.Outline import Outline
 
 bot = AsyncTeleBot(os.getenv('BOT_TOKEN'))
@@ -21,13 +16,11 @@ async def welcome(message):
 @bot.message_handler(commands=['key'])
 async def get_key(message):
     user_id = message.from_user.id
+    outline = Outline()
 
     try:
-        key = Outline().get_dynamic_key(user_id)
+        key = outline.get_dynamic_key(user_id)
     except ValueError:
-        key = Outline().generate_dynamic_key(user_id)
+        key = outline.create_dynamic_key(user_id)
 
     await bot.reply_to(message, key)
-
-
-asyncio.run(bot.polling())

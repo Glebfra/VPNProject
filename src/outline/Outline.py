@@ -10,10 +10,9 @@ from src.models.OutlineKey import OutlineKey
 
 
 class Outline:
-    api_url: str = os.getenv('API_URL')
-    api_cert: str = os.getenv('API_CERT')
-
     def __init__(self):
+        self.api_url: str = os.getenv('API_URL')
+        self.api_cert: str = os.getenv('API_CERT')
         self.client = OutlineVPN(self.api_url, self.api_cert)
         self.engine = create_engine(os.getenv('SERVER_DB'), echo=True)
 
@@ -21,12 +20,12 @@ class Outline:
         user_id = str(user_id)
 
         with Session(self.engine) as session:
-            statement = (
-                select(DynamicKey)
-                .join(DynamicKey.outline_key)
-                .where(OutlineKey.telegram_id == user_id)
+            dynamic_key = (
+                session.query(DynamicKey)
+                .join(OutlineKey)
+                .filter(OutlineKey.telegram_id == user_id)
+                .first()
             )
-            dynamic_key = session.scalar(statement)
             if dynamic_key:
                 return dynamic_key.dynamic_outline_key
 
@@ -45,15 +44,15 @@ class Outline:
                 access_url=key.access_url
             )
             dynamic_key = DynamicKey(
-                outline_key=outline_key,
-                dynamic_outline_key=self.get_dynamic_key(user_id),
+                outline_key=outline_key.id,
+                dynamic_outline_key=self._generate_dynamic_key(user_id),
             )
             session.add_all([outline_key, dynamic_key])
             session.commit()
 
             return dynamic_key.dynamic_outline_key
 
-    def generate_dynamic_key(self, user_id: Union[str, int]) -> str:
+    def _generate_dynamic_key(self, user_id: Union[str, int]) -> str:
         user_id = int(user_id)
         return f"{os.getenv('SERVER_HOST')}/conf/{os.getenv('OUTLINE_SALT')}?hex_id={hex(user_id)}"
 

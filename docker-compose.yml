@@ -14,8 +14,10 @@ services:
 
   outline:
     container_name: outline
+    restart: always
     build:
       context: ./src
+      dockerfile: ./Dockerfile
     env_file:
       - .env
     volumes:
@@ -23,15 +25,20 @@ services:
     ports:
       - "8000:8000"
 
-  telegram_bot:
-    container_name: telegram_bot
+  telegram-bot:
+    container_name: telegram-bot
+    restart: always
     build:
-      context: ./src/bot
+      context: ./src
+      dockerfile: ./Dockerfile.bot
     env_file:
       - .env
+    volumes:
+      - ./src:/usr/src
 
   adminer:
     image: adminer
+    container_name: adminer
     restart: always
     ports:
       - "8080:8080"

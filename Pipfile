@@ -10,6 +10,7 @@ python-dotenv = "*"
 fastapi = "*"
 outline-vpn-api = "*"
 pytelegrambotapi = "*"
+aiohttp = "*"
 
 [dev-packages]
 

@@ -6,6 +6,10 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from src.models.Base import Base
 
+if __name__ == '__main__':
+    from dotenv import load_dotenv
+    load_dotenv('../../.env')
+
 
 class OutlineKey(Base):
     __tablename__ = 'outline_key'
@@ -21,5 +25,5 @@ class OutlineKey(Base):
 
 
 if __name__ == '__main__':
-    engine = create_engine(os.getenv('SERVER_DB'), echo=True)
+    engine = create_engine(os.getenv('DEV_SERVER_DB'), echo=True)
     OutlineKey.__table__.create(engine)
