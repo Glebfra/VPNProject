@@ -1,6 +1,7 @@
 import os
+from typing import Union
 
-from outline_vpn.outline_vpn import OutlineVPN
+from outline_vpn.outline_vpn import OutlineKey, OutlineVPN
 from sqlalchemy import create_engine
 
 
@@ -12,11 +13,12 @@ class Outline:
         self.client = OutlineVPN(self.api_url, self.api_cert)
         self.engine = create_engine(os.getenv('SERVER_DB'), echo=True)
 
-    def bytes_to_gbytes(self, bytes):
-        return bytes / (1024 ** 3)
+    def generate_dynamic_key(self, user_id: Union[str, int]) -> str:
+        user_id = int(user_id)
+        return f"{os.getenv('SERVER_HOST')}/conf/{os.getenv('OUTLINE_SALT')}?hex_id={hex(user_id)}"
 
-    def gbytes_to_bytes(self, gbytes):
-        return gbytes * (1024 ** 3)
+    def create_new_key(self, name) -> OutlineKey:
+        return self.client.create_key(name=name)
 
 
 if __name__ == '__main__':
